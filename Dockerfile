@@ -1,4 +1,4 @@
-FROM armv7/armhf-debian
+FROM resin/rpi-raspbian:wheezy
 MAINTAINER Bonhun Koo <darkgs@hanmail.net>
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
