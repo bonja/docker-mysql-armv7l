@@ -1,7 +1,7 @@
 #FROM resin/rpi-raspbian:latest
 #FROM jsurf/rpi-raspbian:latest
-#FROM armv7/armhf-debian
-FROM ioft/armhf-ubuntu:16.04
+FROM armv7/armhf-debian:jessie
+#FROM ioft/armhf-ubuntu:16.04
 
 #RUN [ "cross-build-start" ]
 
@@ -59,8 +59,9 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+RUN /usr/bin/mysql_install_db --user=mysql
 
-RUN [ "cross-build-end" ]
+#RUN [ "cross-build-end" ]
 
 VOLUME /var/lib/mysql
 
